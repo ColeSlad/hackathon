@@ -1,31 +1,27 @@
+// Import necessary libraries and components
 import React, { useState } from 'react';
-
 import { Container, Row, Col } from 'reactstrap';
 import EncyclopediaCarousel from './EncyclopediaCarousel.js';
 import './Encyclopedia.css';
 
-  
+// Main function component
 function Encyclopedia() {
-
+  // Define API key
   var apiKey = "Q3A1YL3AAZWPHNITZOX0A1W8ZI7W75UB6LYEOKAGFKQA47B11G3ZGOCCHMEPJHDJ";
 
+  // Define state variables
   const NUM_IMAGES = 1;
   const [canvasImages, setCanvasImages] = useState(Array(NUM_IMAGES).fill(''));
-
   const [userInput, setUserInput] = useState('');
   const [generatedImage, setGeneratedImage] = useState('');
   const [responseText, setResponseText] = useState('');
-
   const [dynamicItems, setDynamicItems] = useState(Array(NUM_IMAGES).fill({
     src: '',
     altText: '',
     caption: ''
   }));
-  
-//   var dynamicItems = [
-    
-//   ];
 
+  // Function to generate description using OpenAI API
   async function generateDescription() {
     const promptText = `Describe ${userInput}. Mention their strengths, weaknesses, and other notable information in 7 sentences or less.`;
   
@@ -45,18 +41,18 @@ function Encyclopedia() {
             })
         });
         const data = await response.json();
-        //now just processing the data
+        // Set the response text state variable with the data received
         setResponseText(data.choices[0].message.content);
         console.log(responseText);
     } catch (error) {
         console.error('Error:', error);
         setResponseText('Error in processing request');
     }
-
   }
-  
+
+  // Function to generate image URL using OpenAI API
   async function generateImageURL() {
-      try {
+    try {
         const response = await fetch('https://jamsapi.hackclub.dev/openai/images/generations', {
           method: 'POST',
           headers: {
@@ -77,34 +73,30 @@ function Encyclopedia() {
         const generatedImageUrl = eventsResponse.data[0].url;
         console.log(generatedImageUrl);
   
-      //   setShowAnimation(false);
-  
         return generatedImageUrl;
       } catch (error) {
         console.error('Error fetching OpenAI completion:', error);
-      //   setShowAnimation(false);
-        // You may want to handle the error in a way that makes sense for your application.
         return '';
       }
     }
 
+  // Function to handle search input change
   const handleSearchChange = (event) => {
     setUserInput(event.target.value);
   }
 
+  // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     await generateDescription();
     var newItems = dynamicItems;
-    
+
     console.log("encycolpedia items"+ newItems);
     var updatedCanvasImages = Array(NUM_IMAGES).fill('');
 
     for (let i = 0; i < NUM_IMAGES; i++) {
-    
       updatedCanvasImages[i] = await generateImageURL();
       console.log("mid of handleFormSubmit "+updatedCanvasImages[i]);
-
     }
     setCanvasImages(updatedCanvasImages);
 
@@ -119,6 +111,7 @@ function Encyclopedia() {
     console.log("end of handleFormSubmit "+generatedImage)
   };
 
+  // Render the component
   return (
       <div className='encyclopedia-container'>
         <Container>
@@ -130,10 +123,9 @@ function Encyclopedia() {
                   <input className='inputText' type="text" value={userInput} onChange={handleSearchChange} placeholder="Search the encyclopedia" />
               </form>
               <p className='descriptionText'>{responseText}</p>
-              
           </Col>
           <Col className='text-right'>
-              <EncyclopediaCarousel items={dynamicItems}/>        
+              <EncyclopediaCarousel items={dynamicItems}/>
           </Col>
         </Row>
         </Container>
