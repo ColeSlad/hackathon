@@ -150,7 +150,7 @@ const Translation = () => {
 
     return (
         
-        <div className="container-fluid translation-section">
+        <div className="container-fluid translation-section" id="translate">
             <div className="header">
                 <h2>Translate Your Enemy</h2>
             </div>
@@ -186,7 +186,7 @@ const Translation = () => {
                             </div>
                         )}
 
-                        <p className="translation-output">{responseText}</p>
+                        <p className="translation-output" id="encyclopedia">{responseText}</p>
                     </div>
                 </div>
             </div>

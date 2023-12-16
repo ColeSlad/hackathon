@@ -13,6 +13,8 @@ import TranslationGPT from 'components/Footers/TranslationGPT.js';
 // sections for this page
 import Images from "./index-sections/Images.js";
 import BasicElements from "./index-sections/BasicElements.js";
+import About from "./index-sections/About.js";
+import BattleSimulator from "./index-sections/BattleSimulator.js";
 import Navbars from "./index-sections/Navbars.js";
 import Tabs from "./index-sections/Tabs.js";
 import Pagination from "./index-sections/Pagination.js";
@@ -45,24 +47,11 @@ function Index() {
       <div className="wrapper">
         <IndexHeader />
         <div className="main">
+          <About />
+          <TranslationGPT />
           <Encyclopedia />
-          <BasicElements />
-          <Navbars />
-          <Tabs />
-          <Pagination />
-          <Notifications />
-          <Typography />
-          <Javascript />
-          <Carousel />
-          <NucleoIcons />
-          <CompleteExamples />
-          <SignUp />
-          <Examples />
-          <Download />
-
-        <TranslationGPT />
+          <BattleSimulator />
         </div>
-        <DarkFooter />
       </div>
     </>
   );

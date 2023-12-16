@@ -120,24 +120,24 @@ function Encyclopedia() {
   };
 
   return (
-    <div className='encyclopedia-container'>
-      <Container>
-      <h1 className='text-center'>Encyclopedia</h1>
-      <h3 className='text-center'>Find information about your enemies.</h3>
-      <Row xs="2" className='xxl'>
-        <Col className="text-left">
-            <form  onSubmit={handleFormSubmit}>
-                <input className='inputText' type="text" value={userInput} onChange={handleSearchChange} placeholder="Search the encyclopedia" />
-            </form>
-            <p className='descriptionText'>{responseText}</p>
-            
-        </Col>
-        <Col className='text-right'>
-            <EncyclopediaCarousel items={dynamicItems}/>        
-        </Col>
-      </Row>
-      </Container>
-    </div>
+      <div className='encyclopedia-container'>
+        <Container>
+        <h1 className='text-center'>Encyclopedia</h1>
+        <h4 className='text-center'>Find information about your enemies.</h4>
+        <Row xs="2" className='xxl'>
+          <Col className="text-left">
+              <form  onSubmit={handleFormSubmit}>
+                  <input className='inputText' type="text" value={userInput} onChange={handleSearchChange} placeholder="Search the encyclopedia" />
+              </form>
+              <p className='descriptionText'>{responseText}</p>
+              
+          </Col>
+          <Col className='text-right'>
+              <EncyclopediaCarousel items={dynamicItems}/>        
+          </Col>
+        </Row>
+        </Container>
+      </div>
   );
 }
 

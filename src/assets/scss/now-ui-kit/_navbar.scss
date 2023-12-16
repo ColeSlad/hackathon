@@ -32,7 +32,6 @@
         }
 
         .nav-link.btn{
-            padding: $padding-btn-vertical $padding-btn-horizontal;
 
             &.btn-lg{
                 padding: $padding-large-vertical $padding-large-horizontal;
@@ -101,7 +100,8 @@
 
     .navbar-brand{
         text-transform: uppercase;
-        font-size: $font-size-small;
+        font-size: 20px;
+        font-weight: 600;
         padding-top: $padding-base-vertical;
         padding-bottom: $padding-base-vertical;
         line-height: $line-height-nav-link;
@@ -180,7 +180,7 @@
 }
 
 .bg-info{
-    background-color: $info-color !important;
+    background-color: #ffb236 !important;
 }
 
 .bg-success{

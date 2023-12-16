@@ -4340,7 +4340,7 @@ Created using IcoMoon - icomoon.io
   background-color: #f96332;
 }
 .nav-tabs.nav-tabs-info > .nav-item > .nav-link.active {
-  background-color: #2ca8ff;
+  background-color: #ffa72c;
 }
 .nav-tabs.nav-tabs-danger > .nav-item > .nav-link.active {
   background-color: #ff3636;
@@ -5769,7 +5769,7 @@ img {
 }
 
 .clear-filter[filter-color="orange"] {
-  background: rgba(44, 44, 44, 0.2);
+  background: rgba(255, 136, 92);
   /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(
     90deg,

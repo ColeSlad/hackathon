@@ -449,14 +449,17 @@
 }
 
 .brand .h1-seo {
+  color: #F5F5F5;
   font-size: 2.8em;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 600;
+  text-shadow: rgb(4, 4, 4) 1px 1px 10px;
 }
 
 .brand .n-logo {
   max-width: 100px;
   margin-bottom: 40px;
+  font-weight: bold;
 }
 
 .invision-logo {

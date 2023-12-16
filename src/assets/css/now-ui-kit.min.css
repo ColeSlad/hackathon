@@ -5162,7 +5162,7 @@ img {
   display: none;
 }
 .clear-filter[filter-color="orange"] {
-  background: rgba(44, 44, 44, 0.2);
+  background: rgba(255, 136, 92, 0.2);
   background: -webkit-linear-gradient(
     90deg,
     rgba(44, 44, 44, 0.2),
