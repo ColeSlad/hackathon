@@ -11,6 +11,7 @@ const Translation = () => {
 
     // Object containing language options for translation
     const languageOptions = {
+        "english": "Select",
         "arabic": "Arabic",
         "bulgarian": "Bulgarian",
         "chinese (simplified)": "Chinese (Simplified)",

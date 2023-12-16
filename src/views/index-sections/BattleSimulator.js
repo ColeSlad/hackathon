@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 
-import {
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
-  } from "reactstrap";
 
+// Initialize styled components.  
 const Section = styled.div`
     height: 75vh;
     display: flex;
@@ -88,11 +83,7 @@ const SubmitButton = styled.button`
     margin-left: 10px;
     margin-bottom: 20px;
 `
-
-
-
-
-
+// Define the component.
 const BattleSimulator = () => {
   const [numOfMyCombatants, setNumOfMyCombatants] = useState(0);
   const [myArmorQuality, setMyArmorQuality] = useState('');
@@ -104,6 +95,7 @@ const BattleSimulator = () => {
 
   const [responseText, setResponseText] = useState('');
 
+  // OpenAI API call.
   const handleResponse = async () => {
     console.log("hih")
     const promptText = `In one sentence, giving only a percentage as an answer (ranging from 0-100), not considering any other factors besides the ones given, what is the chance of winning this fictional battle with the following features: My side: ${numOfMyCombatants} combatants with ${myArmorQuality} weapons and armor and ${myTerrainAdvantage ? "a terrain advantage" : "no terrain advantage"} versus the opponent side: ${numOfOppCombatants} combatants with ${oppArmorQuality} weapons and armor and ${oppTerrainAdvantage ? "a terrain advantage" : "no terrain advantage"}`;
