@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Translation.css';
 //import axios from 'axios';
 
 const Translation = () => {
@@ -8,47 +9,49 @@ const Translation = () => {
     const [isLoading, setIsLoading] = useState(false); // Add loading state
 
     const languageOptions = {
-        "en": "English",
-        "es": "Spanish",
-        "fr": "French",
-        "de": "German",
-        "zh-CN": "Chinese (Simplified)",
-        "zh-TW": "Chinese (Traditional)",
-        "da": "Danish",
-        "nl": "Dutch",
-        "fi": "Finnish",
-        "el": "Greek",
-        "hi": "Hindi",
-        "it": "Italian",
-        "ja": "Japanese",
-        "ko": "Korean",
-        "no": "Norwegian",
-        "pl": "Polish",
-        "pt": "Portuguese",
-        "ru": "Russian",
-        "sv": "Swedish",
-        "tr": "Turkish",
-        "cs": "Czech",
-        "ro": "Romanian",
-        "hu": "Hungarian",
-        "sk": "Slovak",
-        "sl": "Slovenian",
-        "lt": "Lithuanian",
-        "lv": "Latvian",
-        "et": "Estonian",
-        "bg": "Bulgarian",
-        "hr": "Croatian",
-        "sr": "Serbian",
-        "uk": "Ukrainian",
-        "he": "Hebrew",
-        "ur": "Urdu",
-        "ar": "Arabic",
-        "fa": "Persian",
-        "th": "Thai",
-        "vi": "Vietnamese",
-        "id": "Indonesian",
+        "arabic": "Arabic",
+        "bulgarian": "Bulgarian",
+        "chinese (simplified)": "Chinese (Simplified)",
+        "chinese (traditional)": "Chinese (Traditional)",
+        "croatian": "Croatian",
+        "czech": "Czech",
+        "danish": "Danish",
+        "dutch": "Dutch",
+        "english": "English",
+        "estonian": "Estonian",
+        "finnish": "Finnish",
+        "french": "French",
+        "german": "German",
+        "greek": "Greek",
+        "hebrew": "Hebrew",
+        "hindi": "Hindi",
+        "hungarian": "Hungarian",
+        "indonesian": "Indonesian",
+        "italian": "Italian",
+        "japanese": "Japanese",
+        "korean": "Korean",
+        "latvian": "Latvian",
+        "lithuanian": "Lithuanian",
+        "norwegian": "Norwegian",
+        "persian": "Persian",
+        "polish": "Polish",
+        "portuguese": "Portuguese",
+        "romanian": "Romanian",
+        "russian": "Russian",
+        "serbian": "Serbian",
+        "slovak": "Slovak",
+        "slovenian": "Slovenian",
+        "spanish": "Spanish",
+        "swedish": "Swedish",
+        "thai": "Thai",
+        "turkish": "Turkish",
+        "ukrainian": "Ukrainian",
+        "urdu": "Urdu",
+        "vietnamese": "Vietnamese",
         // ... continue adding other languages
     };
+    
+    
 
 
     const handleTranslate = async () => {
@@ -115,34 +118,82 @@ const Translation = () => {
     //     }
     // };
 
+    // return (
+    //     <div>
+    //         <textarea 
+    //             value={inputText}
+    //             onChange={(e) => setInputText(e.target.value)}
+    //             placeholder="Enter text"
+    //         />
+    //         <select value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
+    //             {Object.entries(languageOptions).map(([code, name]) => (
+    //                 <option key={code} value={code}>{name}</option>
+    //             ))}
+    //         </select>
+    //         <button onClick={handleTranslate}>Translate</button>
+
+    //         <div>
+    //             <p>Translation:</p>
+
+    //             {/* Spinner */}
+    //              {isLoading && (
+    //             <div className="spinner-border text-success" role="status">
+    //                 <span className="sr-only">Loading...</span>
+    //             </div>
+    //              )}
+
+    //             <p>{responseText}</p>
+    //         </div>
+    //     </div>
+    // );
+
+
     return (
-        <div>
-            <textarea 
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder="Enter text"
-            />
-            <select value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
-                {Object.entries(languageOptions).map(([code, name]) => (
-                    <option key={code} value={code}>{name}</option>
-                ))}
-            </select>
-            <button onClick={handleTranslate}>Translate</button>
+        
+        <div className="container-fluid translation-section">
+            <div className="header">
+                <h2>Translate Your Enemy</h2>
+            </div>
+            <div className="row justify-content-center">
+                <div className="col-12 col-md-8">
+                    <div className="translation-card p-4 mb-3">
+                        <textarea 
+                            className="form-control mb-3"
+                            value={inputText}
+                            onChange={(e) => setInputText(e.target.value)}
+                            placeholder="Enter text"
+                        />
+                        <select 
+                            className="form-control mb-3"
+                            value={targetLang} 
+                            onChange={(e) => setTargetLang(e.target.value)}
+                        >
+                            {Object.entries(languageOptions).map(([code, name]) => (
+                                <option key={code} value={code}>{name}</option>
+                            ))}
+                        </select>
+                        <button 
+                            className="btn btn-primary mb-3"
+                            onClick={handleTranslate}
+                        >
+                            Translate
+                        </button>
 
-            <div>
-                <p>Translation:</p>
+                        {/* Spinner */}
+                        {isLoading && (
+                            <div className="spinner-border text-gold" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        )}
 
-                {/* Spinner */}
-                 {isLoading && (
-                <div className="spinner-border text-success" role="status">
-                    <span className="sr-only">Loading...</span>
+                        <p className="translation-output">{responseText}</p>
+                    </div>
                 </div>
-                 )}
-
-                <p>{responseText}</p>
             </div>
         </div>
     );
+
+
 }
 
 export default Translation;
