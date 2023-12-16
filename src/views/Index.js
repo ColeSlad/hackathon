@@ -24,6 +24,7 @@ import CompleteExamples from "./index-sections/CompleteExamples.js";
 import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
+import Encyclopedia from "./index-sections/Encyclopedia.js";
 
 function Index() {
   React.useEffect(() => {
@@ -43,7 +44,7 @@ function Index() {
       <div className="wrapper">
         <IndexHeader />
         <div className="main">
-          <Images />
+          <Encyclopedia />
           <BasicElements />
           <Navbars />
           <Tabs />
