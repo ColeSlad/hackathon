@@ -5,6 +5,7 @@ const Translation = () => {
     const [inputText, setInputText] = useState('');
     const [responseText, setResponseText] = useState('');
     const [targetLang, setTargetLang] = useState('en');
+    const [isLoading, setIsLoading] = useState(false); // Add loading state
 
     const languageOptions = {
         "en": "English",
@@ -51,6 +52,8 @@ const Translation = () => {
 
 
     const handleTranslate = async () => {
+        setResponseText('');
+        setIsLoading(true); // Start loading
         const promptText = `Translate this to ${targetLang}: ${inputText}`;
     
         try {
@@ -75,6 +78,9 @@ const Translation = () => {
             console.error('Error:', error);
             setResponseText('Error in processing request');
         }
+
+        setIsLoading(false); // Stop loading
+
     };
     
     
@@ -122,8 +128,17 @@ const Translation = () => {
                 ))}
             </select>
             <button onClick={handleTranslate}>Translate</button>
+
             <div>
                 <p>Translation:</p>
+
+                {/* Spinner */}
+                 {isLoading && (
+                <div className="spinner-border text-success" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+                 )}
+
                 <p>{responseText}</p>
             </div>
         </div>
