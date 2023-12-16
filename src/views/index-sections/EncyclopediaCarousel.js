@@ -53,7 +53,7 @@ class EncyclopediaCarousel extends React.Component {
           key={index}
         >
           <img src={item.src} alt={item.altText} className="d-block w-100" />
-          <CarouselCaption captionHeader={item.caption} />
+          {/* <CarouselCaption captionHeader={item.caption} /> */}
         </CarouselItem>
       );
     });
