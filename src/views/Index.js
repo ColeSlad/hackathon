@@ -8,6 +8,7 @@ import React from "react";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import DarkFooter from "components/Footers/DarkFooter.js";
+import TranslationGPT from 'components/Footers/TranslationGPT.js';
 
 // sections for this page
 import Images from "./index-sections/Images.js";
@@ -58,6 +59,8 @@ function Index() {
           <SignUp />
           <Examples />
           <Download />
+
+        <TranslationGPT />
         </div>
         <DarkFooter />
       </div>
