@@ -27,7 +27,7 @@ function Encyclopedia() {
 //   ];
 
   async function generateDescription() {
-    const promptText = `Describe ${userInput} in 3 sentences or less.`;
+    const promptText = `Describe ${userInput}. Mention their strengths, weaknesses, and other notable information in 7 sentences or less.`;
   
     try {
         const response = await fetch('https://jamsapi.hackclub.dev/openai/chat/completions', {
@@ -123,10 +123,11 @@ function Encyclopedia() {
     <div className='encyclopedia-container'>
       <Container>
       <h1 className='text-center'>Encyclopedia</h1>
+      <h3 className='text-center'>Find information about your enemies.</h3>
       <Row xs="2" className='xxl'>
         <Col className="text-left">
-            <form className='inputText' onSubmit={handleFormSubmit}>
-                <input  type="text" value={userInput} onChange={handleSearchChange} placeholder="Search the encyclopedia" />
+            <form  onSubmit={handleFormSubmit}>
+                <input className='inputText' type="text" value={userInput} onChange={handleSearchChange} placeholder="Search the encyclopedia" />
             </form>
             <p className='descriptionText'>{responseText}</p>
             
