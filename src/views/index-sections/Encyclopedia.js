@@ -15,6 +15,7 @@ function Encyclopedia() {
   const [userInput, setUserInput] = useState('');
   const [generatedImage, setGeneratedImage] = useState('');
   const [responseText, setResponseText] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // State to handle loading status
   const [dynamicItems, setDynamicItems] = useState(Array(NUM_IMAGES).fill({
     src: '',
     altText: '',
@@ -23,7 +24,8 @@ function Encyclopedia() {
 
   // Function to generate description using OpenAI API
   async function generateDescription() {
-    const promptText = `Describe ${userInput}. Mention their strengths, weaknesses, and other notable information in 7 sentences or less.`;
+    setIsLoading(true); // Set loading state to true
+    const promptText = `Describe ${userInput}. Mention their strengths, weaknesses, and other notable information in 5 sentences or less.`;
   
     try {
         const response = await fetch('https://jamsapi.hackclub.dev/openai/chat/completions', {
@@ -48,6 +50,7 @@ function Encyclopedia() {
         console.error('Error:', error);
         setResponseText('Error in processing request');
     }
+    setIsLoading(false); // Set loading state to true
   }
 
   // Function to generate image URL using OpenAI API
@@ -121,6 +124,12 @@ function Encyclopedia() {
           <Col className="text-left">
               <form  onSubmit={handleFormSubmit}>
                   <input className='inputText' type="text" value={userInput} onChange={handleSearchChange} placeholder="Search the encyclopedia" />
+                  {/* Display a spinner while translation is in progress */}
+                  {isLoading && (
+                            <div className="spinner-border text-gold" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        )}
               </form>
               <p className='descriptionText'>{responseText}</p>
           </Col>
