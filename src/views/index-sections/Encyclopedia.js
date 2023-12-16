@@ -24,7 +24,7 @@ function Encyclopedia() {
 
   // Function to generate description using OpenAI API
   async function generateDescription() {
-    setIsLoading(true); // Set loading state to true
+    setIsLoading(true); // Set loading state to false
     const promptText = `Describe ${userInput}. Mention their strengths, weaknesses, and other notable information in 5 sentences or less.`;
   
     try {
@@ -50,11 +50,11 @@ function Encyclopedia() {
         console.error('Error:', error);
         setResponseText('Error in processing request');
     }
-    setIsLoading(false); // Set loading state to true
   }
 
   // Function to generate image URL using OpenAI API
   async function generateImageURL() {
+    setIsLoading(true); // Set loading state to true
     try {
         const response = await fetch('https://jamsapi.hackclub.dev/openai/images/generations', {
           method: 'POST',
@@ -76,9 +76,12 @@ function Encyclopedia() {
         const generatedImageUrl = eventsResponse.data[0].url;
         console.log(generatedImageUrl);
   
+        
+        setIsLoading(false); // Set loading state to false
         return generatedImageUrl;
       } catch (error) {
         console.error('Error fetching OpenAI completion:', error);
+        setIsLoading(false); // Set loading state to false
         return '';
       }
     }
